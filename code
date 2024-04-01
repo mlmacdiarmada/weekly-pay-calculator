@@ -1,0 +1,62 @@
+print("GCMC Pay Calculator")
+
+print()
+number = input("How many hours did you work this week?")
+hours_worked = int(number)
+regular_hours = 0
+differential_hours = 0
+tier_3_hours = 0
+ot_hours = 0
+# x < 36
+if hours_worked < 36:
+    regular_hours = (hours_worked)
+    differential_hours = (hours_worked)
+# 36 < x <= 40
+elif 36 < hours_worked <= 40:
+    regular_hours = hours_worked
+    differential_hours = hours_worked
+    tier_3_hours = hours_worked - 36
+# x > 40
+else:
+    regular_hours = 40
+    differential_hours = hours_worked
+    tier_3_hours = hours_worked - 36
+    ot_hours = hours_worked - 40
+#Pay codes
+regular_hrly = 16.06
+differential_hrly = 2.5
+tier_3_hrly = 16.25
+ot_hrly = 22.5
+#Totals
+regular_pay = regular_hours * regular_hrly
+differential_pay = differential_hrly * differential_hours
+tier_3_pay = tier_3_hrly * tier_3_hours
+ot_pay = ot_hrly * ot_hours
+#Interface
+print("GCMC PAY TOTALS")
+print("Regular Pay: $", regular_pay)
+print("Differential Pay: $", differential_pay)
+print("Tier 3 Pay: $", tier_3_pay)
+print("OT Pay: $", ot_pay)
+print("______________________")
+gross = regular_pay + differential_pay + tier_3_pay + ot_pay
+print("GROSS TOTAL: $",gross)
+#Deductions
+accident_insurance = 3.67/2
+critical_illness = 3.18/2
+enhanced_dental = 8.09/2
+geisinger_value = 58.42/2
+group_legal = 6.92/2
+hsa_cont = 20/2
+hospital_indemnity = 15.38/2
+ltd_50 = 1.01/2
+op_life = .4/2
+buy_up = 4.15/2
+univ_life = 13.31/2
+vision = 3.03/2
+deductions = accident_insurance + critical_illness + enhanced_dental+geisinger_value+group_legal+hsa_cont+hospital_indemnity+ltd_50+op_life+buy_up+univ_life+vision
+after_ded = gross - deductions
+print("AFTER DEDUCTIONS: $", after_ded)
+taxes = .2
+net = after_ded * (1 - taxes)
+print("NET: $", net)
